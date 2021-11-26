@@ -23,6 +23,7 @@
   <h2>Rodando o projeto</h2>
   <ol>
     <li>composer install</li>
+    <li>Configure o arquivo .env com seu banco de dados</li>
     <li>symfony server</li>
   </ol>
 </p>
