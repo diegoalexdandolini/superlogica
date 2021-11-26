@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}UserForm index{% endblock %}
+
+{% block body %}
+    <h1>UserForm index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>User_name</th>
+                <th>Zip_code</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user_form in user_forms %}
+            <tr>
+                <td>{{ user_form.id }}</td>
+                <td>{{ user_form.name }}</td>
+                <td>{{ user_form.userName }}</td>
+                <td>{{ user_form.zipCode }}</td>
+                <td>{{ user_form.email }}</td>
+                <td>{{ user_form.password }}</td>
+                <td>
+                    <a href="{{ path('user_form_show', {'id': user_form.id}) }}">show</a>
+                    <a href="{{ path('user_form_edit', {'id': user_form.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('user_form_new') }}">Create new</a>
+{% endblock %}
