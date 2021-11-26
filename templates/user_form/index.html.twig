@@ -3,41 +3,95 @@
 {% block title %}UserForm index{% endblock %}
 
 {% block body %}
-    <h1>UserForm index</h1>
+    <div class="container">
+        <h1>Mostrar Usuarios</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>User_name</th>
-                <th>Zip_code</th>
-                <th>Email</th>
-                <th>Password</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for user_form in user_forms %}
-            <tr>
-                <td>{{ user_form.id }}</td>
-                <td>{{ user_form.name }}</td>
-                <td>{{ user_form.userName }}</td>
-                <td>{{ user_form.zipCode }}</td>
-                <td>{{ user_form.email }}</td>
-                <td>{{ user_form.password }}</td>
-                <td>
-                    <a href="{{ path('user_form_show', {'id': user_form.id}) }}">show</a>
-                    <a href="{{ path('user_form_edit', {'id': user_form.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Nome do usuario</th>
+                    <th>CEP</th>
+                    <th>E-mail</th>
+                    <th>Senha</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for user_form in user_forms %}
+                <tr>
+                    <td>{{ user_form.id }}</td>
+                    <td>{{ user_form.name }}</td>
+                    <td>{{ user_form.userName }}</td>
+                    <td>{{ user_form.zipCode }}</td>
+                    <td>{{ user_form.email }}</td>
+                    <td>{{ user_form.password }}</td>
+                    <td>
+                        <a class="btn" href="{{ path('user_form_show', {'id': user_form.id}) }}">show</a>
+                        <a class="btn" href="{{ path('user_form_edit', {'id': user_form.id}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-    <a href="{{ path('user_form_new') }}">Create new</a>
+        <a href="{{ path('user_form_new') }}">Cadastrar</a>
+    </div>
+
+    <style lang="css">
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    div.container {
+        width: 100%;
+        height: 100%;
+    }
+
+    .table {
+        width: 50%;
+        height: 50%;
+
+        background: gray;
+        
+        position: absolute;        
+        top: 50%;
+        transform: translate(0, -50%);
+        margin-left: 25%;
+        margin-right: auto;
+    }
+
+    h1 {
+        padding-top: 4%;
+        margin-left: 25%;
+        margin-right: auto;
+        font-size: 35px;
+    }
+
+    a {
+        margin-left: 25%;
+        text-decoration: none;
+        font-size: 22px;
+        color: #6A5ACD;
+    }
+
+    .btn {
+        margin-right: 20%;
+    }
+
+    td {
+        background: #F5DEB3;
+        text-align: center;
+    }
+
+    </style>
 {% endblock %}
